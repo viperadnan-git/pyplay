@@ -18,7 +18,7 @@ function NavBar(props) {
         <Navbar variant="static" isCompact isBordered disableBlur>
             <Navbar.Brand>
                 <Image
-          src={`${process.env.PUBLIC_URL}logo512.png`}
+          src="/logo512.png"
           alt="Default Image"
           width={"2.2rem"}
         />
