@@ -8,7 +8,7 @@ function NavBar(props) {
     const isMd = useMediaQuery(650);
     const [copyBtn, setCopyBtn] = useState("Copy");
 
-    const onCopy = (e) => {
+    const onCopy = () => {
         props.onCopy();
         setCopyBtn("Copied");
         setTimeout(() => setCopyBtn("Copy"), 2000);
@@ -18,10 +18,10 @@ function NavBar(props) {
         <Navbar variant="static" isCompact isBordered disableBlur>
             <Navbar.Brand>
                 <Image
-          src="/logo512.png"
-          alt="Default Image"
-          width={"2.2rem"}
-        />
+                    src="/logo512.png"
+                    alt="Default Image"
+                    width={"2.2rem"}
+                />
                 <Text h2 color="inherit">
                     PyPlay
                 </Text>

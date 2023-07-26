@@ -43,8 +43,10 @@ function App() {
 
     const onRun = () => {
         state.output = "";
-        setOutput("")
-        setRunBtn(<Loading type="points-opacity" color="currentColor" size="sm" />)
+        setOutput("");
+        setRunBtn(
+            <Loading type="points-opacity" color="currentColor" size="sm" />
+        );
         sk.configure({ output: onPrint });
         var myPromise = sk.misceval.asyncToPromise(function () {
             return sk.importMainWithBody("<stdin>", false, code, true);
@@ -52,7 +54,7 @@ function App() {
         myPromise.then(
             function (mod) {
                 setOutput(state.output);
-                setRunBtn("Run")
+                setRunBtn("Run");
             },
             function (err) {
                 setOutput(err.toString());
@@ -62,20 +64,25 @@ function App() {
 
     const onSave = () => {
         const element = document.createElement("a");
-        const file = new Blob([code], {type: 'text/python'});
+        const file = new Blob([code], { type: "text/python" });
         element.href = URL.createObjectURL(file);
         element.download = "pyplay-code.py";
         document.body.appendChild(element);
         element.click();
-    }
+    };
 
     const onCopy = () => {
-        navigator.clipboard.writeText(code)
-    }
+        navigator.clipboard.writeText(code);
+    };
 
     return (
         <NextUIProvider theme={theme}>
-            <NavBar runText={runBtn} onRun={onRun} onCopy={onCopy} onSave={onSave}></NavBar>
+            <NavBar
+                runText={runBtn}
+                onRun={onRun}
+                onCopy={onCopy}
+                onSave={onSave}
+            ></NavBar>
             <Grid.Container
                 justify="center"
                 style={{ height: "calc(100vh - 54px)" }}
@@ -101,20 +108,19 @@ function App() {
                 </Grid>
                 <Grid xs={4} style={{ borderLeft: "8px #21232B solid" }}>
                     <Card
-                    className="mains"
+                        className="mains"
                         variant="flat"
                         css={{
                             borderRadius: 0,
                             backgroundColor: "#282a36",
-                            height:"calc(100vh - 54px)"
+                            height: "calc(100vh - 54px)",
                         }}
                     >
-
                         <Text
-                            size={"$sm"}                            
+                            size={"$sm"}
                             css={{
                                 letterSpacing: 0.3,
-                                margin:"8px",
+                                margin: "8px",
                                 whiteSpace: "pre",
                                 overflow: "scroll",
                                 font: "16.4px Inconsolata, monospace",
